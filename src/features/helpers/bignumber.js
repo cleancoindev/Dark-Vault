@@ -1,27 +1,32 @@
 import BigNumber from 'bignumber.js'
 
-export function isNaN(value){
+BigNumber.config({
+  EXPONENTIAL_AT: 1000,
+  DECIMAL_PLACES: 80,
+})
+
+export function isNaN(value) {
   return new BigNumber(`${value}`).isNaN()
 }
 
-export function isNumber(value){
+export function isNumber(value) {
   const isNaNResult = isNaN(value)
   return !isNaNResult
 }
 
-export function isInteger(value){
+export function isInteger(value) {
   return new BigNumber(`${value}`).isInteger()
 }
 
-export function isPositive(value){
+export function isPositive(value) {
   return new BigNumber(`${value}`).isPositive()
 }
 
-export function isNegative(value){
+export function isNegative(value) {
   return new BigNumber(`${value}`).isNegative()
 }
 
-export function isZero(value){
+export function isZero(value) {
   return new BigNumber(`${value}`).isZero()
 }
 
@@ -29,7 +34,7 @@ export function countDecimalPlaces(value) {
   return new BigNumber(`${value}`).dp()
 }
 
-export function convertNumberToString(value){
+export function convertNumberToString(value) {
   return new BigNumber(`${value}`).toString()
 }
 
@@ -37,15 +42,15 @@ export function convertStringToNumber(value) {
   return new BigNumber(`${value}`).toNumber()
 }
 
-export function convertHexToString(hex){
+export function convertHexToString(hex) {
   return new BigNumber(`${hex}`).toString()
 }
 
-export function convertStringToHex(value){
+export function convertStringToHex(value) {
   return new BigNumber(`${value}`).toString(16)
 }
 
-export function greaterThan(numberOne,numberTwo){
+export function greaterThan(numberOne, numberTwo) {
   return (
     new BigNumber(`${numberOne}`).comparedTo(new BigNumber(`${numberTwo}`)) ===
     1
@@ -55,7 +60,7 @@ export function greaterThan(numberOne,numberTwo){
 export function greaterThanOrEqual(
   numberOne,
   numberTwo
-){
+) {
   return (
     new BigNumber(`${numberOne}`).comparedTo(new BigNumber(`${numberTwo}`)) >= 0
   )
@@ -64,7 +69,7 @@ export function greaterThanOrEqual(
 export function smallerThan(
   numberOne,
   numberTwo
-){
+) {
   return (
     new BigNumber(`${numberOne}`).comparedTo(new BigNumber(`${numberTwo}`)) ===
     -1
@@ -74,7 +79,7 @@ export function smallerThan(
 export function smallerThanOrEqual(
   numberOne,
   numberTwo
-){
+) {
   return (
     new BigNumber(`${numberOne}`).comparedTo(new BigNumber(`${numberTwo}`)) <= 0
   )
@@ -83,7 +88,7 @@ export function smallerThanOrEqual(
 export function multiply(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .times(new BigNumber(`${numberTwo}`))
     .toString()
@@ -92,7 +97,7 @@ export function multiply(
 export function divide(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .dividedBy(new BigNumber(`${numberTwo}`))
     .toString()
@@ -101,7 +106,7 @@ export function divide(
 export function floorDivide(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .dividedToIntegerBy(new BigNumber(`${numberTwo}`))
     .toString()
@@ -110,7 +115,7 @@ export function floorDivide(
 export function mod(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .mod(new BigNumber(`${numberTwo}`))
     .toString()
@@ -119,7 +124,7 @@ export function mod(
 export function add(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .plus(new BigNumber(`${numberTwo}`))
     .toString()
@@ -128,7 +133,7 @@ export function add(
 export function subtract(
   numberOne,
   numberTwo
-){
+) {
   return new BigNumber(`${numberOne}`)
     .minus(new BigNumber(`${numberTwo}`))
     .toString()
@@ -137,7 +142,7 @@ export function subtract(
 export function convertAmountToRawNumber(
   value,
   decimals = 18
-){
+) {
   return new BigNumber(`${value}`)
     .times(new BigNumber('10').pow(decimals))
     .toString()
@@ -146,7 +151,7 @@ export function convertAmountToRawNumber(
 export function convertAmountFromRawNumber(
   value,
   decimals = 18
-){
+) {
   return new BigNumber(`${value}`)
     .dividedBy(new BigNumber('10').pow(decimals))
     .toString()
@@ -156,7 +161,7 @@ export function handleSignificantDecimals(
   value,
   decimals,
   buffer
-){
+) {
   if (
     !new BigNumber(`${decimals}`).isInteger() ||
     (buffer && !new BigNumber(`${buffer}`).isInteger())
@@ -179,7 +184,7 @@ export function handleSignificantDecimals(
     : new BigNumber(`${result}`).toFormat()
 }
 
-export function formatFixedDecimals(value, decimals){
+export function formatFixedDecimals(value, decimals) {
   const _value = convertNumberToString(value)
   const _decimals = convertStringToNumber(decimals)
   const result = new BigNumber(
@@ -191,7 +196,7 @@ export function formatFixedDecimals(value, decimals){
 export function formatInputDecimals(
   inputOne,
   inputTwo
-){
+) {
   const _nativeAmountDecimalPlaces = countDecimalPlaces(inputTwo)
   const decimals =
     _nativeAmountDecimalPlaces > 8 ? _nativeAmountDecimalPlaces : 8
@@ -213,14 +218,14 @@ export function forMat(number) {
   ).toNumber()
 }
 
-export function byDecimals(number, tokenDecimals = 18){
+export function byDecimals(number, tokenDecimals = 18) {
   const decimals = new BigNumber(10).exponentiatedBy(tokenDecimals);
   return new BigNumber(number).dividedBy(decimals);
 }
 
-export function calculateReallyNum(total,sliderNum){
-  if(sliderNum == undefined){
-      return byDecimals(0, 0).toFormat(4);
+export function calculateReallyNum(total, sliderNum) {
+  if (sliderNum == undefined) {
+    return byDecimals(0, 0).toFormat(4);
   }
-  return byDecimals(sliderNum/100*Number(total), 0).toFormat(4);
+  return byDecimals(sliderNum / 100 * Number(total), 0).toFormat(4);
 }
