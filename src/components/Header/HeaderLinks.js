@@ -21,7 +21,6 @@ import { useTranslation } from 'react-i18next';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
 import styles from "assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
 const useStyles = makeStyles(styles);
 
@@ -141,48 +140,52 @@ export default function HeaderLinks(props) {
           </ListItem>
         ))
       }
-      {/* <ListItem className={classes.listItem}>
+      <ListItem className={classes.listItem}>
         <CustomDropdown
           navDropdown
-          hoverColor={dropdownHoverColor}
-          buttonIcon={TranslateIcon}
-          buttonText={lng}
+          hoverColor='#ccc'
+          buttonText='links'
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
           }}
-          onClick={handleClick}
           dropdownList={[
-            "English",
-            "中文",
-            "日本語",
-            "한글",
-            "ไทย",
             { divider: true },
             <a
-              href="https://github.com/yfii/vault/tree/master/src/locales"
+              href="https://dark-vision.netlify.app"
               target="_blank"
             >
-              Help to translate
-            </a>
+              Vision
+            </a>,
+            <a
+              href="https://dark-liquidity.netlify.app"
+              target="_blank"
+            >
+              Liquidity
+            </a>,
+            <a
+              href="https://dark-exchange.netlify.app"
+              target="_blank"
+            >
+              Exchange
+            </a>,
+            { divider: true },
+            <a
+              href="https://discord.com/invite/GS3c5D8"
+              target="_blank"
+            >
+              Discord
+            </a>,
+            <a
+              href="https://twitter.com/DarkBuild1"
+              target="_blank"
+            >
+              Twitter
+          </a>,
           ]}
         />
-        
-      </ListItem> */}
-      {/* DARK mode buton */}
-      {/* <ListItem className={classes.listItem}>
-      <FormControlLabel
-        control={
-          <Switch
-            checked={state.checkedB}
-            onChange={handleChange}
-            name="checkedB"
-            color="primary"
-          />
-        }
-        label="DARK"
-      />
-      </ListItem> */}
+
+      </ListItem>
       <ListItem className={classes.listItem}>
         <Button
           style={{
