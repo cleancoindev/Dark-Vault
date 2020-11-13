@@ -44,11 +44,10 @@ const useStyles = makeStyles(styles);
 const footerLinkArr = [
     {content:'Token Contract',href:'https://etherscan.io/address/0x3108ccfd96816f9e663baa0e8c5951d229e8c6da'},
     // {content:'CoinMarketCap',href:'https://coinmarketcap.com/zh/currencies/yearn-finance-ii/'},
-    // {content:'CoinGecko',href:'https://www.coingecko.com/en/coins/dfi-money'},
-    // {content:'Forum',href:'https://gov.dfi.money/'},
-    // {content:'Stats',href:'https://stats.dfi.money/'},
-    // {content:'Voting',href:'https://snapshot.page/#/dfi'},
-    {content:'Documentation',href:'https://medium.com/@darkswap/darkswap-7bf717646aa0'},
+    {content:'CoinGecko',href:'https://www.coingecko.com/en/coins/darkbuild'},
+    {content:'Stake',href:'https://dark-Stake.netlify.app/'},
+
+    // {content:'Documentation',href:'https://medium.com/@darkswap/darkswap-7bf717646aa0'},
     {content:'Uniswap DARK-ETH',href:'https://app.uniswap.org/#/swap?inputCurrency=0x3108ccfd96816f9e663baa0e8c5951d229e8c6da'},
 ];
 
