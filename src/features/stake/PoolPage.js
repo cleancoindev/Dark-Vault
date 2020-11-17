@@ -19,7 +19,7 @@ export default function PoolPage(props) {
   }, [index]);
   return (
     <>
-      <StakePool {...props}/>
+      <StakePool />
     </>
   );
 }

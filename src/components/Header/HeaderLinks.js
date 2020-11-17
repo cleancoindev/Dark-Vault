@@ -33,7 +33,7 @@ const useStyles = makeStyles(styles);
 const tabArr = [
   { value: '', label: 'Home' },
   // {value:'vault',label:'Vault'},
-  { value: 'stake', label: 'Stake' },
+  { value: 'stake/pool/4', label: 'Stake' },
 ]
 
 export default function HeaderLinks(props) {
@@ -42,7 +42,6 @@ export default function HeaderLinks(props) {
     checkedB: true,
   });
   const handleChange = (event) => {
-    console.log(event.target.checked);
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
@@ -122,8 +121,11 @@ export default function HeaderLinks(props) {
   let defaultTabValue = '';
   if (window.location.hash != '#/' && window.location.hash != '#/index') {
     defaultTabValue = window.location.hash.split('/')[1];
+    if (defaultTabValue !== '') {
+      defaultTabValue = defaultTabValue + "/pool/4";
+      console.log(defaultTabValue)
+    }
   }
-
   return (
     <List className={classes.list + " " + classes.mlAuto}>
       {
@@ -170,18 +172,18 @@ export default function HeaderLinks(props) {
               Exchange
             </a>,
             { divider: true },
-            <a
-              href="https://discord.com/invite/GS3c5D8"
-              target="_blank"
-            >
-              Discord
-            </a>,
-            <a
-              href="https://twitter.com/DarkBuild1"
-              target="_blank"
-            >
-              Twitter
-          </a>,
+          //   <a
+          //     href="https://discord.gg/darkbuild"
+          //     target="_blank"
+          //   >
+          //     Discord
+          //   </a>,
+          //   <a
+          //     href="https://twitter.com/DarkBuild1"
+          //     target="_blank"
+          //   >
+          //     Twitter
+          // </a>,
           ]}
         />
 
